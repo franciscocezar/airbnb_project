@@ -10,7 +10,7 @@ class PricePredictor:
 
     def __init__(self):
         self.root = root
-        self.root.title("")
+        self.root.title("Property Price Prediction Tool")
         self.center()
         self.frames()
         self.widgets()
@@ -18,7 +18,7 @@ class PricePredictor:
 
     def center(self):
         APP_WIDTH = 850
-        APP_HEIGHT = 600
+        APP_HEIGHT = 500
 
         screen_width = self.root.winfo_screenwidth()
         screen_height = self.root.winfo_screenheight()
@@ -35,26 +35,30 @@ class PricePredictor:
 
 
     def widgets(self):
+
+        title_label = tb.Label(text="Previsão de Preço Airbnb RJ", font=('Helvetica', 28), anchor=CENTER)
+        title_label.place(relx=0.02, rely=0.05, relwidth=0.96, relheight=0.06)
+
         # Customtkinter
         self.latitude_entry = customtkinter.CTkEntry(master=self.frame_1, width=120,
                                                      placeholder_text="Latitude", border_width=1)
-        self.latitude_entry.place(relx=0.03, rely=0.31, relwidth=0.25)
+        self.latitude_entry.place(relx=0.03, rely=0.33, relwidth=0.25)
 
         self.longetude_entry = customtkinter.CTkEntry(master=self.frame_1, width=120,
                                                       placeholder_text="Longetude", border_width=1)
-        self.longetude_entry.place(relx=0.3, rely=0.31, relwidth=0.25)
+        self.longetude_entry.place(relx=0.3, rely=0.33, relwidth=0.25)
 
         self.extra_people_entry = customtkinter.CTkEntry(master=self.frame_1, width=120,
-                                                         placeholder_text="Extra Pessoas", border_width=1)
-        self.extra_people_entry.place(relx=0.578, rely=0.31, relwidth=0.17)
+                                                         placeholder_text="Pessoa Extra", border_width=1)
+        self.extra_people_entry.place(relx=0.578, rely=0.33, relwidth=0.17)
 
         self.month_entry = customtkinter.CTkEntry(master=self.frame_1, width=120,
                                                   placeholder_text="Mês", border_width=1)
-        self.month_entry.place(relx=0.77, rely=0.31, relwidth=0.07)
+        self.month_entry.place(relx=0.77, rely=0.33, relwidth=0.07)
 
         self.year_entry = customtkinter.CTkEntry(master=self.frame_1, width=120,
                                                  placeholder_text="Ano", border_width=1)
-        self.year_entry.place(relx=0.86, rely=0.31, relwidth=0.1)
+        self.year_entry.place(relx=0.86, rely=0.33, relwidth=0.1)
 
 
 
@@ -99,25 +103,25 @@ class PricePredictor:
         self.host_is_superhost = tb.IntVar()
         self.host_is_superhost.set(9)
         self.host_is_superhos_label = tb.Labelframe(text='Super Host')
-        self.host_is_superhos_label.place(relx=0.23, rely=0.424, relwidth=0.18, relheight=0.11)
+        self.host_is_superhos_label.place(relx=0.23, rely=0.56, relwidth=0.18, relheight=0.11)
         tb.Radiobutton(text='Sim', variable=self.host_is_superhost,
                        value=1, command=lambda: print(self.host_is_superhost.get()),
-                       bootstyle="light-outline-toolbutton").place(relx=0.25, rely=0.46)
+                       bootstyle="light-outline-toolbutton").place(relx=0.25, rely=0.6)
         tb.Radiobutton(text='Não', variable=self.host_is_superhost,
                        value=0, command=lambda: print(self.host_is_superhost.get()),
-                       bootstyle="light-outline-toolbutton").place(relx=0.33, rely=0.46)
+                       bootstyle="light-outline-toolbutton").place(relx=0.33, rely=0.6)
 
 
         self.instant_bookable = tb.IntVar()
         self.instant_bookable.set(9)
         self.instant_bookable_label = tb.Labelframe(text='Reserva Imediata')
-        self.instant_bookable_label.place(relx=0.56, rely=0.424, relwidth=0.18, relheight=0.11)
+        self.instant_bookable_label.place(relx=0.56, rely=0.56, relwidth=0.18, relheight=0.11)
         tb.Radiobutton(text='Sim', variable=self.instant_bookable,
                        value=1, command=lambda: print(self.instant_bookable.get()),
-                       bootstyle="light-outline-toolbutton").place(relx=0.58, rely=0.46)
+                       bootstyle="light-outline-toolbutton").place(relx=0.58, rely=0.6)
         tb.Radiobutton(text='Não', variable=self.instant_bookable,
                        value=0, command=lambda: print(self.instant_bookable.get()),
-                       bootstyle="light-outline-toolbutton").place(relx=0.66, rely=0.46)
+                       bootstyle="light-outline-toolbutton").place(relx=0.66, rely=0.6)
 
 
         # TB - OPTIONS
@@ -125,27 +129,25 @@ class PricePredictor:
                               'House', 'Loft', 'Others', 'Serviced apartment']
         self.property_type = tb.Combobox(values=property_type)
         self.property_type.set("Tipo de Imóvel")
-        self.property_type.place(relx=0.07, rely=0.6, relwidth=0.25)
-
-
+        self.property_type.place(relx=0.07, rely=0.45, relwidth=0.25)
 
         room_type = ['Entire home/apt', 'Hotel room', 'Private room', 'Shared room']
         self.room_type = tb.Combobox(values=room_type)
         self.room_type.set("Tipo de Quarto")
-        self.room_type.place(relx=0.357, rely=0.6, relwidth=0.25)
+        self.room_type.place(relx=0.357, rely=0.45, relwidth=0.25)
 
         cancellation_policy = ['flexible', 'moderate', 'strict', 'strict_14_with_grace_period']
         self.cancellation_policy = tb.Combobox(values=cancellation_policy)
         self.cancellation_policy.set("Política de Cancelamento")
-        self.cancellation_policy.place(relx=0.65, rely=0.6, relwidth=0.25)
+        self.cancellation_policy.place(relx=0.65, rely=0.45, relwidth=0.25)
 
 
         # TB - BUTTON
         self.save_button = tb.Button(text="Prever Preço", bootstyle=LIGHT)
-        self.save_button.place(relx=0.357, rely=0.71, relwidth=0.25)
+        self.save_button.place(relx=0.36, rely=0.74, relwidth=0.25)
 
-        # self.label_mode = tb.Label(master=self.frame_1, text="Preço")
-        # self.label_mode.place(relx=0.05, rely=0.75, relwidth=0.9)
+        self.label_mode = tb.Label(text="Resultado da Previsão: R$", anchor=CENTER)
+        self.label_mode.place(relx=0.03, rely=0.86, relwidth=0.93, relheight=0.06)
 
 
 if __name__ == "__main__":
