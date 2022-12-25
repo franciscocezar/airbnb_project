@@ -14,8 +14,7 @@ x_lists = {
                       'Loft', 'Others', 'Serviced apartment'],
     'room_type': ['Entire home/apt', 'Hotel room', 'Private room', 'Shared room'],
     'cancellation_policy': ['flexible', 'moderate', 'strict', 'strict_14_with_grace_period']
-    }
-
+}
 dicionario = {}
 for item in x_lists:
     for valor in x_lists[item]:
@@ -54,3 +53,4 @@ if botao:
     modelo = joblib.load('model.joblib')
     preco = modelo.predict(valores_x)
     st.write(f'Valor sugerido: R${preco[0]}')
+
