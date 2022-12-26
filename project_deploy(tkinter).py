@@ -102,13 +102,13 @@ class PricePredictor:
         self.host_is_superhost = tb.IntVar()
         self.host_is_superhost.set(9)
         self.host_is_superhos_label = tb.Labelframe(text='Super Host')
-        self.host_is_superhos_label.place(relx=0.23, rely=0.56, relwidth=0.18, relheight=0.11)
+        self.host_is_superhos_label.place(relx=0.25, rely=0.56, relwidth=0.18, relheight=0.11)
         tb.Radiobutton(text='Sim', variable=self.host_is_superhost,
                        value=1,
-                       bootstyle="light-outline-toolbutton").place(relx=0.25, rely=0.6)
+                       bootstyle="light-outline-toolbutton").place(relx=0.27, rely=0.6)
         tb.Radiobutton(text='Não', variable=self.host_is_superhost,
                        value=0,
-                       bootstyle="light-outline-toolbutton").place(relx=0.33, rely=0.6)
+                       bootstyle="light-outline-toolbutton").place(relx=0.35, rely=0.6)
 
         self.instant_bookable = tb.IntVar()
         self.instant_bookable.set(9)
@@ -129,19 +129,19 @@ class PricePredictor:
         self.room_t = ['Entire home/apt', 'Hotel room', 'Private room', 'Shared room']
         self.room_type = tb.Combobox(values=self.room_t)
         self.room_type.set("Tipo de Quarto")
-        self.room_type.place(relx=0.357, rely=0.45, relwidth=0.25)
+        self.room_type.place(relx=0.37, rely=0.45, relwidth=0.25)
 
         self.cancellation_pol = ['flexible', 'moderate', 'strict', 'strict_14_with_grace_period']
         self.cancellation_policy = tb.Combobox(values=self.cancellation_pol)
         self.cancellation_policy.set("Política de Cancelamento")
-        self.cancellation_policy.place(relx=0.65, rely=0.45, relwidth=0.25)
+        self.cancellation_policy.place(relx=0.67, rely=0.45, relwidth=0.25)
 
         # TB - BUTTON
-        self.save_button = tb.Button(text="Prever Preço", bootstyle=LIGHT, command=self.back_end)
-        self.save_button.place(relx=0.36, rely=0.74, relwidth=0.25)
+        self.save_button = tb.Button(text="Prever Preço", bootstyle=DEFAULT, command=self.back_end)
+        self.save_button.place(relx=0.37, rely=0.74, relwidth=0.25)
 
-        self.label_mode = tb.Label(text="Resultado da Previsão: R$", anchor=CENTER)
-        self.label_mode.place(relx=0.03, rely=0.86, relwidth=0.93, relheight=0.06)
+        self.label_price = tb.Label(text="", font=('Helvetica', 17), anchor=CENTER, bootstyle=INVERSE)
+        self.label_price.place(relx=0.03, rely=0.86, relwidth=0.93, relheight=0.06)
 
     def back_end(self):
 
@@ -181,7 +181,7 @@ class PricePredictor:
         values_x = values_x[columns_df]
         model = joblib.load('model.joblib')
         price = model.predict(values_x)
-        self.label_mode.config(text=f"Resultado da Previsão: R${price[0]}")
+        self.label_price.config(text=f"Resultado da Previsão: R$ {price[0]}")
 
 
 if __name__ == "__main__":
