@@ -1,5 +1,11 @@
 # Rio de Janeiro (RJ) Airbnb Project - Property price prediction tool for ordinary people
 
+![Captura de Tela 2022-12-25 às 21 24 12](https://user-images.githubusercontent.com/102926017/209485772-06dedaa9-e9fc-41d3-803c-97ff54bbc8bf.png)
+
+
+![Captura de Tela 2022-12-25 às 21 19 34](https://user-images.githubusercontent.com/102926017/209485721-83f5b66a-c161-41ef-83eb-89198d6da90a.png)
+
+
 ## Objective
 
 Build a price prediction model that allows a person who owns a property to know how much they should charge per day for renting their property.
